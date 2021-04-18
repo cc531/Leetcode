@@ -8,7 +8,6 @@ class Solution {
             // greedy
             if (nums[i - 1] > 0)
                 nums[i] += nums[i - 1];
-
             max_ans = Math.max(max_ans, nums[i]);
         }
 

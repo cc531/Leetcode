@@ -9,7 +9,6 @@ class Solution {
             // right boundary
             for (int j = i; j < nums.length; j++) {
                 tmp += nums[j];
-
                 sum = Math.max(tmp, sum);
             }
         }
