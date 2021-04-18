@@ -15,12 +15,10 @@ class Solution {
                 // aggregation
                 for (int k = i; k <= j; k++) {
                     tmp += nums[k];
-                }
-
-                sum = Math.max(tmp, sum);
+                    sum = Math.max(tmp, sum);
             }
         }
 
-        return sum;
+        return sum;     
     }
 }

@@ -25,15 +25,15 @@ class Solution {
         int p2 = 0;
 
         // Compare elements from nums1Copy and nums2 and write the smallest to nums1.
-        for (int p = 0; p < m + n; p++) {
+        for (int i = 0; i < m + n; i++) {
             // We also need to ensure that p1 and p2 aren't over the boundaries
             // of their respective arrays.
             // condition 2 || condition 3
             if (p2 == n || (p1 < m && nums1Copy[p1] <= nums2[p2])) {
-                nums1[p] = nums1Copy[p1];
+                nums1[i] = nums1Copy[p1];
                 p1++;
             } else {
-                nums1[p] = nums2[p2];
+                nums1[i] = nums2[p2];
                 p2++;
             }
         }
