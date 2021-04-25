@@ -16,6 +16,7 @@ class Solution {
         }
 
         // find the index
+        // leetcode
         for (int i = 0; i < n; i++) {
             if (count.get(s.charAt(i)) == 1)
                 return i;
