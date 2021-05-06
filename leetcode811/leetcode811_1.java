@@ -5,9 +5,10 @@ class Solution {
         for (String domain : cpdomains) {
             String[] cpinfo = domain.split(" ");
             String[] frags = cpinfo[1].split("\\.");
-            int count = Integer.valueOf(cpinfo[0]);
 
+            int count = Integer.valueOf(cpinfo[0]);
             String cur = "";
+
             for (int i = frags.length - 1; i >= 0; i--) {
                 // a += b ==> a = a + b
                 if (i == frags.length - 1)

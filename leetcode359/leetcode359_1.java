@@ -15,7 +15,8 @@ class Logger {
         if (!hashmap.containsKey(message)) {
             hashmap.put(message, timestamp);
             return true;
-        } else {
+        } else 
+        {
             int last_time = hashmap.get(message);
 
             if (timestamp - last_time >= 10) {
