@@ -19,11 +19,13 @@ class Logger {
      * be printed. The timestamp is in seconds granularity.
      */
     public boolean shouldPrintMessage(int timestamp, String message) {
-        if (timestamp - time_new >= 20) {
+        if (timestamp - time_new >= 20) 
+        {
             old_cache.clear();
             new_cache.clear();
             time_new = timestamp;
-        } else if (timestamp - time_new >= 10) {
+        } else if (timestamp - time_new >= 10) 
+        {
             // swap
             HashMap<String, Integer> tmp = old_cache;
             old_cache = new_cache;
@@ -32,15 +34,14 @@ class Logger {
             new_cache.clear();
             time_new = timestamp;
         }
-
         // < 10
         if (new_cache.containsKey(message))
             return false;
 
         // >= 10 < 20
-        if (old_cache.containsKey(message)) {
+        if (old_cache.containsKey(message)) 
+        {
             int last = old_cache.get(message);
-            // 下面不懂
             if (timestamp - last < 10)
                 return false;
         }
