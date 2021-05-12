@@ -18,14 +18,18 @@ class Logger {
      * otherwise returns false. If this method returns false, the message will not
      * be printed. The timestamp is in seconds granularity.
      */
+
+    // msg = 1, 2, 5, 10, 19, 23, 51, 59, 61 only 59 and 61 are the same msg
+    // old_cache = {} new_cache = {1, 2, 5, 10} time_new = 1
+    // old_cache = {1, 2, 5, 10} new_cache = {19, 23} time_new = 19
+    // old_cache = {} new_cache = {51, 59} time_new = 51
+    // old_cache = {51, 59} new_cache = {} time_new = 61
     public boolean shouldPrintMessage(int timestamp, String message) {
-        if (timestamp - time_new >= 20) 
-        {
+        if (timestamp - time_new >= 20) {
             old_cache.clear();
             new_cache.clear();
             time_new = timestamp;
-        } else if (timestamp - time_new >= 10) 
-        {
+        } else if (timestamp - time_new >= 10) {
             // swap
             HashMap<String, Integer> tmp = old_cache;
             old_cache = new_cache;
@@ -38,9 +42,8 @@ class Logger {
         if (new_cache.containsKey(message))
             return false;
 
-        // >= 10 < 20
-        if (old_cache.containsKey(message)) 
-        {
+        // timestamp - time_new >= 10 < 20
+        if (old_cache.containsKey(message)) {
             int last = old_cache.get(message);
             if (timestamp - last < 10)
                 return false;

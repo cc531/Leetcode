@@ -17,6 +17,7 @@ class Solution {
         }
 
         int n = copy.size();
+        // 為什麼不可以 i >= 0, 會outofbound
         for (int i = n - 1; i > 0; i--) {
             copy.get(i).next = copy.get(i - 1);
         }
