@@ -15,7 +15,7 @@ class Solution {
 
         int len = copy.size();
 
-        // rmove head
+        // remove head
         if (n == len)
             return head.next;
         // remove tail

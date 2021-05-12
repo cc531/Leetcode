@@ -12,11 +12,18 @@ class Solution {
 
         // Advances first pointer so that the gap between first and second is n nodes
         // apart
-        for (int i = 0; i <= n; i++) {
+        // n = 2
+        // dummy -> 1 -> 2 -> 3 -> 4 -> 5 -> null
+        // fast
+        // slow ************ fast
+        // move n + 1 steps
+        for (int i = 0; i < n + 1; i++) {
             first = first.next;
         }
 
         // Move first to the end, maintaining the gap
+        // dummy -> 1 -> 2 -> 3 -> 4 -> 5 -> null
+        // ***************** slow ********** fast
         while (first != null) {
             first = first.next;
             second = second.next;

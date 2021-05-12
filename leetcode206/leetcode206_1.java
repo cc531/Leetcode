@@ -12,6 +12,7 @@ class Solution {
             ListNode next = cur.next;
             cur.next = prev;
             prev = cur;
+            // next放到cur的位子
             cur = next;
         }
 

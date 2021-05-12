@@ -13,6 +13,16 @@ class Logger {
      * otherwise returns false. If this method returns false, the message will not
      * be printed. The timestamp is in seconds granularity.
      */
+    // msg = 1, 2, 5, 10, 19, 23, 51, 59, 61 only 59 and 61 are the same msg
+    // q : {1(msg), 1(timestamp)}, {2, 2} {5, 5} {10, 10} messages = {1, 2, 5, 10}
+    // only contain less than 10 msg
+    // q : {10, 10} {19, 19} messages = {10, 19}
+    // q: {19, 19} {23, 23} messages = {19, 23}
+    // int[] a = new int[2];
+    // a[1];
+    // List<Integer> b = new ArrayList<>();
+    // b.add(0); b.add(1);
+    // b.get(1) == 1;
     public boolean shouldPrintMessage(int timestamp, String message) {
         while (!queue.isEmpty() && timestamp - Integer.parseInt(queue.peek().get(1)) >= 10) {
             List<String> msginfo = queue.poll();
