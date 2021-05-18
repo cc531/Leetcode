@@ -39,7 +39,7 @@ class Solution {
             int y = pos[0], x = pos[1];
 
             // down
-            if (y > 0 && grid[y - 1][x] == '1') {
+            if (y >= 1 && grid[y - 1][x] == '1') {
                 st.push(new int[] { y - 1, x });
                 grid[y - 1][x] = '0';
             }
@@ -49,7 +49,7 @@ class Solution {
                 grid[y + 1][x] = '0';
             }
             // left
-            if (x > 0 && grid[y][x - 1] == '1') {
+            if (x >= 1 && grid[y][x - 1] == '1') {
                 st.push(new int[] { y, x - 1 });
                 grid[y][x - 1] = '0';
             }

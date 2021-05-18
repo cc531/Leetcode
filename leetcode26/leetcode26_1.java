@@ -1,31 +1,29 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-        // pos is for next non duplicates number
-        int pos = 0;
-        int n = nums.length;
-        int i = 0;
-        int ignore_count = 0;
+        int p = 0, ignore_count = 0, pos = 0;
+        // pos : 放unique數字的位子
 
-        while (i < n) {
-            int num = nums[i];
-            swap(nums, pos, i);
+        while (p < nums.length) {
+            int num = nums[p];
+            // put non-duplicated (unique) "p" to the left
+            swap(nums, p, pos);
             pos++;
-            i++;
+            p++;
 
-            // ignore duplicate cases
-            while (i < n && nums[i] == num) {
-                i++;
+            while (p < nums.length && nums[p] == num) {
+                p++;
                 ignore_count++;
             }
         }
 
-        return n - ignore_count;
+        return nums.length - ignore_count;
+
     }
 
-    public void swap(int[] nums, int p1, int p2) {
-        int tmp = nums[p1];
-        nums[p1] = nums[p2];
-        nums[p2] = tmp;
+    public void swap(int[] swap, int p1, int p2) {
+        int tmp = swap[p1];
+        swap[p1] = swap[p2];
+        swap[p2] = tmp;
     }
 }
 
