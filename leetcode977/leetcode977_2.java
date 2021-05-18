@@ -4,26 +4,22 @@ class Solution {
             nums[i] *= nums[i];
         }
 
-        int n = nums.length;
-        int[] ans = new int[n];
+        int[] arr = new int[nums.length];
+        int p1 = 0, p2 = nums.length - 1, pos = nums.length - 1;
 
-        int p1 = 0, p2 = n - 1;
-        // pos for ans
-        int pos = n - 1;
-
-        // or pos >= 0
-        while (p1 <= p2) {
-            if (nums[p1] < nums[p2]) {
-                ans[pos] = nums[p2];
-                p2--;
-            } else {
-                ans[pos] = nums[p1];
+        while (pos >= 0) {
+            if (nums[p1] > nums[p2]) {
+                arr[pos] = nums[p1];
                 p1++;
+            } else {
+                arr[pos] = nums[p2];
+                p2--;
             }
             pos--;
         }
 
-        return ans;
+        return arr;
+
     }
 }
 

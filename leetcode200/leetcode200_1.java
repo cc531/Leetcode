@@ -45,20 +45,20 @@ class Solution {
     // pos = {2, 1} q: {0, 3}
     // pos = {0, 3} q: {1, 3}
     // pos = {1, 3}
-    private void bfs(char[][] grid, int y, int x) {
+    private void bfs(char[][] grid, int y_start, int x_start) {
         int m = grid.length, n = grid[0].length;
         Queue<int[]> q = new LinkedList<>();
-        q.add(new int[] { y, x });
+        q.add(new int[] { y_start, x_start });
         // set grid[y][x] to 0
-        grid[y][x] = '0';
+        grid[y_start][x_start] = '0';
 
         while (!q.isEmpty()) {
             int[] pos = q.poll();
-            y = pos[0];
-            x = pos[1];
+            int y = pos[0];
+            int x = pos[1];
 
             // down
-            if (y > 0 && grid[y - 1][x] == '1') {
+            if (y >= 1 && grid[y - 1][x] == '1') {
                 q.add(new int[] { y - 1, x });
                 grid[y - 1][x] = '0';
             }
@@ -68,7 +68,7 @@ class Solution {
                 grid[y + 1][x] = '0';
             }
             // left
-            if (x > 0 && grid[y][x - 1] == '1') {
+            if (x >= 1 && grid[y][x - 1] == '1') {
                 q.add(new int[] { y, x - 1 });
                 grid[y][x - 1] = '0';
             }
