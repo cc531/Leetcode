@@ -5,6 +5,7 @@
  * = left; this.right = right; } }
  */
 class Solution {
+    // global
     List<Integer> rightside = new ArrayList();
 
     public void dfs(TreeNode node, int level) {
