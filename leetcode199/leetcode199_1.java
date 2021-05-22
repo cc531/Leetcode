@@ -32,30 +32,10 @@ class Solution {
         return ans;
     }
 }
-// q: 1
-// level 1 (i = 0)
-// ans: 1
-// cur: 1 q: 3, 2
-
-// level 2
-// ans: 1, 3
-// (i = 0)
-// cur: 3 q: 2
-// cur: 3 q: 2, 4
-// (i = 1)
-// cur: 2 q: 4
-// cur: 2 q: 4, 5
-
-// level 3
-// ans : 1, 3, 4
-// (i = 0)
-// cur : 4 q: 5
-// (i = 1)
-// cur : 5, q: (empty)
 
 // Runtime: 1 ms, faster than 72.76% of Java online submissions for Binary Tree
 // Right Side View.
 // Memory Usage: 37.7 MB, less than 50.37% of Java online submissions for Binary
 // Tree Right Side View.
 // time complexity: O(n)
-// space complexity: O(n/2) =~ O(n)
+// space complexity: O(n)

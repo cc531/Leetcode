@@ -6,14 +6,10 @@ class Solution {
 
         // traverse all cities
         for (int i = 0; i < n; i++) {
-            // checking all cities connected with city i
-            // 因為是雙向的所以可以不用從 j = 0 開始
-            for (int j = i; j < n; j++) {
-                // haven't visited city j yet
-                if (visited[j] == false) {
-                    count++;
-                    bfs(isConnected, visited, j);
-                }
+            // haven't visited city j yet
+            if (visited[i] == false) {
+                count++;
+                bfs(isConnected, visited, i);
             }
         }
 

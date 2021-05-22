@@ -18,11 +18,12 @@ class Solution {
 
     private int dfs(int[][] grid, int i, int j) {
         int m = grid.length, n = grid[0].length;
-        int[] dirs = { 1, 0, -1, 0 };
         Stack<int[]> st = new Stack<>();
         st.add(new int[] { i, j });
-        int area_of_land = 1;
+
         grid[i][j] = 0;
+        int area_of_land = 1;
+        int[] dirs = { 1, 0, -1, 0 };
 
         while (!st.isEmpty()) {
             int[] cur = st.pop();
