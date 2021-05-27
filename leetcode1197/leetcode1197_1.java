@@ -6,6 +6,7 @@ class Solution {
         x = Math.abs(x);
         y = Math.abs(y);
 
+        // move steps time reach these positions
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[] { 0, 0 });
 
@@ -14,10 +15,11 @@ class Solution {
 
         int steps = 0;
         while (!queue.isEmpty()) {
+            // move steps time reach these positions
             int size = queue.size();
 
             for (int i = 0; i < size; i++) {
-                int[] cur = queue.remove();
+                int[] cur = queue.poll();
                 int curX = cur[0];
                 int curY = cur[1];
                 if (curX == x && curY == y) {

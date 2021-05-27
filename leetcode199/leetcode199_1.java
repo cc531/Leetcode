@@ -6,6 +6,7 @@
  */
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
+
         List<Integer> ans = new ArrayList<>();
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
@@ -17,6 +18,7 @@ class Solution {
             // number of nodes in this level
             int size = q.size();
 
+            // 每個level的第一個node放進ans arraylist裡面
             ans.add(q.peek().val);
 
             for (int i = 0; i < size; i++) {
