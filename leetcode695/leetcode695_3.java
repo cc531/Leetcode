@@ -19,7 +19,7 @@ class Solution {
     private int dfs(int[][] grid, int r, int c) {
         int m = grid.length, n = grid[0].length;
 
-        if (grid[r][c] == 0 || r < 0 || c < 0 || r >= m || c >= n) {
+        if (r < 0 || c < 0 || r >= m || c >= n || grid[r][c] == 0  {
             return 0;
         }
 
