@@ -1,30 +1,26 @@
 class Solution {
-    public void backtrack(int n, ArrayList<Integer> nums, List<List<Integer>> output, int first) {
-        // if all integers are used up
-        if (first == n)
-            output.add(new ArrayList<Integer>(nums));
+
+    public void backtrack(int n, List<List<Integer>> ans, List<Integer> arrL, int first) {
+        if (first == n) {
+            ans.add(new ArrayList<Integer>(arrL));
+        }
+
         for (int i = first; i < n; i++) {
-            // place i-th integer first
-            // in the current permutation
-            Collections.swap(nums, first, i);
-            // use next integers to complete the permutations
-            backtrack(n, nums, output, first + 1);
-            // backtrack
-            Collections.swap(nums, first, i);
+            Collections.swap(arrL, first, i);
+            backtrack(n, ans, arrL, first + 1);
+            Collections.swap(arrL, first, i);
         }
     }
 
     public List<List<Integer>> permute(int[] nums) {
-        // init output list
-        List<List<Integer>> output = new LinkedList();
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> arrL = new ArrayList<>();
 
-        // convert nums into list since the output is a list of lists
-        ArrayList<Integer> nums_lst = new ArrayList<Integer>();
-        for (int num : nums)
-            nums_lst.add(num);
+        for (int num : nums) {
+            arrL.add(num);
+        }
 
-        int n = nums.length;
-        backtrack(n, nums_lst, output, 0);
-        return output;
+        backtrack(nums.length, ans, arrL, 0);
+        return ans;
     }
 }
