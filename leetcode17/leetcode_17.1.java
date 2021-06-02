@@ -4,7 +4,8 @@ class Solution {
             "pqrs", '8', "tuv", '9', "wxyz");
     private String phoneDigits;
 
-    public List<String> letterCombinations(String digits) {
+    public List<String> letterCombinations(String digits) 
+    {
         // If the input is empty, immediately return an empty answer array
         if (digits.length() == 0) {
             return combinations;

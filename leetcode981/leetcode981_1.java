@@ -1,4 +1,5 @@
 class TimeMap {
+    // foo: {{"bar", "1"} {'bar2', '4'}}
     Map<String, ArrayList<ArrayList<String>>> map;
 
     /** Initialize your data structure here. */
@@ -11,50 +12,33 @@ class TimeMap {
             map.put(key, new ArrayList<ArrayList<String>>());
         }
 
-        map.get(key).add(new ArrayList<String>(List.of(value, String.valueOf(timestamp))));
+        ArrayList<String> arrL = new ArrayList<>();
+        arrL.add(value);
+        arrL.add(String.valueOf(timestamp));
+        map.get(key).add(arrL);
     }
-    // map.get(key)
-    // inputs = ["get"]
-    // inputs = [key]
 
     public String get(String key, int timestamp) {
-        // String ans = "";
-        // int t;
-        // for (ArrayList<String> arrL : map.get(key))
-        // {
-        // if (Integer.valueOf(arrL.get(1)) <= timestamp)
-        // {
-        // t = Integer.valueOf(arrL.get(1));
-        // ans = arrL.get(0);
-        // }
-        // else
-        // {
-        // break;
-        // }
-        // }
-
-        // return ans;
-
-        String ans = "";
-        ArrayList<ArrayList<String>> arrL = map.get(key);
+        String ansStr = "";
+        ArrayList<ArrayList<String>> ans = map.get(key);
 
         // binary search
-        int left = 0, right = arrL.size();
+        int left = 0, right = ans.size();
 
         while (left < right) {
             int mid = left + (right - left) / 2;
-            int t = Integer.valueOf(arrL.get(mid).get(1));
+            int t = Integer.valueOf(ans.get(mid).get(1));
             if (t == timestamp) {
-                return arrL.get(mid).get(0);
+                return ans.get(mid).get(0);
             } else if (t < timestamp) {
-                ans = arrL.get(mid).get(0);
+                ansStr = ans.get(mid).get(0);
                 left = mid + 1;
             } else {
                 right = mid;
             }
         }
 
-        return ans;
+        return ansStr;
     }
 }
 

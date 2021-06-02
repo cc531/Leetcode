@@ -4,6 +4,9 @@ public class Solution {
         int len = s.length();
 
         // first field from 0 - (i-1)
+        // 25525511135
+        // i = 0 s.substr(0,0) = from index 0 to index (0-1)
+        // i = 1 s.substr(0,1) = 2
         for (int i = 1; i < 4 && i < len - 2; i++) {
             // second field from i - (j - 1)
             for (int j = i + 1; j < i + 4 && j < len - 1; j++) {

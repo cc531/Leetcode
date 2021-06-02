@@ -18,6 +18,11 @@ class Solution {
         Queue<int[]> targetQ = new LinkedList<>();
         // [x, y, steps]
         targetQ.add(new int[] { x, y, 0 });
+        // 0 ----------- target
+
+        // (0, 0, ?) (10, 10, ?) original
+        // (4, 6)
+        // (0) 
         // target distance
         Map<String, Integer> targetD = new HashMap<>();
         // key = x,y value = steps
