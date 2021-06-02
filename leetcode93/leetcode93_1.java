@@ -4,7 +4,7 @@ class Solution {
         StringBuilder cur = new StringBuilder();
 
         // special case
-        if (s.equals("")) {
+        if (s.length() == 0) {
             return ans;
         }
 
