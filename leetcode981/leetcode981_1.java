@@ -20,7 +20,6 @@ class TimeMap {
 
     public String get(String key, int timestamp) {
         String ansStr = "";
-        ArrayList<ArrayList<String>> ans = map.get(key);
 
         // binary search
         int left = 0, right = ans.size();
