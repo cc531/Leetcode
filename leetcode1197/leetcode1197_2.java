@@ -22,7 +22,7 @@ class Solution {
 
         // (0, 0, ?) (10, 10, ?) original
         // (4, 6)
-        // (0) 
+        // (0)
         // target distance
         Map<String, Integer> targetD = new HashMap<>();
         // key = x,y value = steps
@@ -57,8 +57,8 @@ class Solution {
                 }
 
                 // expand the circle of target
-                int nextTX = tX + dir[0], nextTY = tY + dir[1], nextTSteps = tSteps + 1;
                 // int[] nextTarget = new int[]{target[0] + dir[0], target[1] + dir[1]};
+                int nextTX = tX + dir[0], nextTY = tY + dir[1], nextTSteps = tSteps + 1;
                 String nextTargetXY = nextTX + "," + nextTY;
                 if (!targetD.containsKey(nextTargetXY)) {
                     targetQ.add(new int[] { nextTX, nextTY, nextTSteps });

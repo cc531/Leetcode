@@ -1,59 +1,25 @@
 class Solution {
     public int minMeetingRooms(int[][] intervals) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        int ans = 0;
+        Arrays.sort(intervals, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
 
-        // Check for the base case. If there are no intervals, return 0
-        if (intervals.length == 0) {
-            return 0;
-        }
-
-        Integer[] start = new Integer[intervals.length];
-        Integer[] end = new Integer[intervals.length];
-
-        for (int i = 0; i < intervals.length; i++) {
-            start[i] = intervals[i][0];
-            end[i] = intervals[i][1];
-        }
-
-        // Sort the intervals by end time
-        Arrays.sort(end, new Comparator<Integer>() {
-            public int compare(Integer a, Integer b) {
-                return a - b;
-            }
-        });
-
-        // Sort the intervals by start time
-        Arrays.sort(start, new Comparator<Integer>() {
-            public int compare(Integer a, Integer b) {
-                return a - b;
-            }
-        });
-
-        // The two pointers in the algorithm: e_ptr and s_ptr.
-        int startPointer = 0, endPointer = 0;
-
-        // Variables to keep track of maximum number of rooms used.
-        int usedRooms = 0;
-
-        // Iterate over intervals.
-        while (startPointer < intervals.length) {
-
-            // If there is a meeting that has ended by the time the meeting at
-            // `start_pointer` starts
-            if (start[startPointer] >= end[endPointer]) {
-                usedRooms -= 1;
-                endPointer += 1;
+        for (int[] interval : intervals) {
+            while (!pq.isEmpty() && interval[0] >= pq.peek()) {
+                pq.poll();
             }
 
-            // We do this irrespective of whether a room frees up or not.
-            // If a room got free, then this used_rooms += 1 wouldn't have any effect.
-            // used_rooms would
-            // remain the same in that case. If no room was free, then this would increase
-            // used_rooms
-            usedRooms += 1;
-            startPointer += 1;
-
+            pq.add(interval[1]);
+            ans = Math.max(ans, pq.size());
         }
 
-        return usedRooms;
+        return ans;
     }
 }
+
+// Runtime: 8 ms, faster than 30.90% of Java online submissions for Meeting
+// Rooms II.
+// Memory Usage: 38.5 MB, less than 85.86% of Java online submissions for
+// Meeting Rooms II.
+// time complexity: O(n log n)
+// space complexity: O(n)

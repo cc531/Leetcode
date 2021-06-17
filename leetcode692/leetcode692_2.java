@@ -1,21 +1,35 @@
 class Solution {
     public List<String> topKFrequent(String[] words, int k) {
+        Map<String, String> freq = new HashMap<>();
 
-        HashMap<String, Integer> map = new HashMap<>();
-        for (String s : words)
-            map.put(s, map.getOrDefault(s, 0) + 1); // Frequent hashmap
+        for (String w : words) {
+            freq.put(w, String.valueOf(Integer.valueOf(freq.getOrDefault(w, "0")) + 1));
+        }
 
-        PriorityQueue<Map.Entry<String, Integer>> maxHeap = new PriorityQueue<>(k, (a,
-                b) -> a.getValue() == b.getValue() ? a.getKey().compareTo(b.getKey()) : b.getValue() - a.getValue());
-        // if same frequency, then sort alphabetical .
+        PriorityQueue<String[]> pq = new PriorityQueue<>(
+                (a, b) -> (Integer.valueOf(a[1]) == Integer.valueOf(b[1]) ? b[0].compareTo(a[0])
+                        : Integer.valueOf(a[1]) - Integer.valueOf(b[1])));
 
-        for (Map.Entry<String, Integer> entry : map.entrySet())
-            maxHeap.add(entry);
+        for (String key : freq.keySet()) {
+            pq.add(new String[] { key, freq.get(key) });
 
-        List<String> res = new ArrayList<>();
-        while (res.size() < k)
-            res.add(maxHeap.poll().getKey()); // add top k
-        return res;
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
 
+        List<String> ans = new ArrayList<>();
+        for (int i = 0; i < k; i++) {
+            ans.add(0, pq.poll()[0]);
+        }
+
+        return ans;
     }
 }
+
+// Runtime: 7 ms, faster than 27.29% of Java online submissions for Top K
+// Frequent Words.
+// Memory Usage: 39 MB, less than 69.10% of Java online submissions for Top K
+// Frequent Words.
+// time complexity: O(n log n)
+// space complexity: O(n)
