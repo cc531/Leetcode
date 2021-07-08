@@ -1,39 +1,27 @@
 class Solution {
     public int[][] kClosest(int[][] points, int k) {
-        Map<Integer, Queue<int[]>> disToPoint = new HashMap<>();
-
-        // priority queue original: 1 2 3 4 5
-        // Decreasing priority queeu
-        // PriorityQueue<>(Collections.reverseOrder())
-        // priority queue now: 5 4 3 2 1 k = 5
+        Map<Integer, Queue<int[]>> map = new HashMap<>();
         PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
 
         for (int[] point : points) {
-            int dis = point[0] * point[0] + point[1] * point[1];
+            int sum = point[0] * point[0] + point[1] * point[1];
 
-            if (disToPoint.get(dis) == null) {
-                disToPoint.put(dis, new LinkedList<int[]>());
+            if (map.get(sum) == null) {
+                map.put(sum, new LinkedList<int[]>());
             }
-            disToPoint.get(dis).add(point);
+            map.get(sum).add(point);
 
-            pq.add(dis);
+            pq.add(sum);
 
-            // at most k distance in pq
-            // k = 2
-            // pq: 18
-            // pq: 26 18
-            // pq: 26 20 18
             if (pq.size() > k) {
                 pq.poll();
             }
-            // pq: 20 18
         }
 
         int[][] ans = new int[k][2];
 
         for (int i = 0; i < k; i++) {
-            int dis = pq.poll();
-            ans[i] = disToPoint.get(dis).poll();
+            ans[i] = map.get(pq.poll()).poll();
         }
 
         return ans;

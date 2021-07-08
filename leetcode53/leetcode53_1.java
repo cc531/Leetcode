@@ -16,9 +16,10 @@ class Solution {
                 for (int k = i; k <= j; k++) {
                     tmp += nums[k];
                     sum = Math.max(tmp, sum);
+                }
             }
         }
 
-        return sum;     
+        return sum;
     }
 }
