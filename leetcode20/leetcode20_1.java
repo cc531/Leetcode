@@ -28,10 +28,8 @@ class Solution {
                     // else
                     st.pop();
                 }
-
             }
         }
-
         return st.isEmpty();
     }
 }

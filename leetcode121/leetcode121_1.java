@@ -1,5 +1,6 @@
 class Solution {
     public int maxProfit(int[] prices) {
+
         int max_ans = 0;
 
         for (int i = 0; i < prices.length; i++) {
