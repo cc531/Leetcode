@@ -4,6 +4,7 @@ class Solution {
         int left = 0, right = n - 1;
         int remove = 1;
 
+        // for case "aba"
         // if necessary, delete left
         while (left < right) {
             if (s.charAt(left) == s.charAt(right)) {
@@ -28,6 +29,7 @@ class Solution {
         right = n - 1;
         remove = 1;
 
+        // for testcase "accccccbaaaa"
         // if necessary, delete right
         while (left < right) {
             if (s.charAt(left) == s.charAt(right)) {
