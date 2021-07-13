@@ -1,28 +1,20 @@
 class Solution {
     public int firstUniqChar(String s) {
+
         int[] arr = new int[26];
-        // HashMap<Character, Integer> map = new HashMap<>();
 
         for (int i = 0; i < s.length(); i++) {
             int value = s.charAt(i) - 'a';
             arr[value]++;
 
-            // char c = s.charAt(i);
-            // map.put(c, map.getOrDefault(c, 0) + 1);
         }
 
         for (int i = 0; i < s.length(); i++) {
             int value = s.charAt(i) - 'a';
-
-            if (arr[value] == 1)
+            if (arr[value] == 1) {
                 return i;
-
-            // if (map.get(c) == 1)
-            // {
-            // return i;
-            // }
+            }
         }
-
         return -1;
     }
 }
