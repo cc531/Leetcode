@@ -21,9 +21,7 @@ class Solution {
             }
         }
 
-        if (left == right)
-            return true;
-        else if (left > right)
+        if (left >= right)
             return true;
 
         left = 0;
@@ -47,9 +45,7 @@ class Solution {
             }
         }
 
-        if (left == right && s.charAt(left) == s.charAt(right))
-            return true;
-        else if (left > right)
+        if (left >= right && s.charAt(left) == s.charAt(right))
             return true;
 
         return false;
