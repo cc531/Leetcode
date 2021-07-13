@@ -7,6 +7,9 @@ class Solution {
                 l++;
                 r--;
             } else {
+                // if not the same
+                // can delete one character on either left or right
+                // then keep comparing by calling isPalindrome function below
                 return isPalindrome(s, l, r - 1) || isPalindrome(s, l + 1, r);
             }
         }
