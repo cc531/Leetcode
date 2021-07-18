@@ -3,9 +3,13 @@ class Solution {
         StringBuilder ans = new StringBuilder();
 
         for (Character c : S.toCharArray()) {
+
+            // first time ans will be empty, so include len == 0 condition to avoid error
             if (ans.length() == 0 || ans.charAt(ans.length() - 1) != c) {
                 ans.append(c);
-            } else {
+            }
+
+            else {
                 ans.deleteCharAt(ans.length() - 1);
             }
         }

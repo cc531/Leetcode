@@ -14,7 +14,8 @@ class Solution {
                     st.push(c);
                     left--;
                 }
-                // else, remove this one
+                // else, ignore this one, dont push into the stack
+
             } else {
                 st.push(c);
             }

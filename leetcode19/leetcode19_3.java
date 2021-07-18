@@ -4,40 +4,57 @@
  * ListNode next) { this.val = val; this.next = next; } }
  */
 class Solution {
-    public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode first = dummy;
-        ListNode second = dummy;
 
-        // Advances first pointer so that the gap between first and second is n nodes
-        // apart
-        // n = 2
-        // dummy -> 1 -> 2 -> 3 -> 4 -> 5 -> null
-        // fast
-        // slow ************ fast
-        // move n + 1 steps
-        for (int i = 0; i < n + 1; i++) {
-            first = first.next;
+    public boolean isPalindrome(ListNode head) {
+
+        if (head == null)
+            return true;
+
+        // Find the end of first half and reverse second half.
+        ListNode firstHalfEnd = endOfFirstHalf(head);
+        ListNode secondHalfStart = reverseList(firstHalfEnd.next);
+
+        // Check whether or not there is a palindrome.
+        ListNode p1 = head;
+        ListNode p2 = secondHalfStart;
+
+        while (p2 != null) {
+            if (p1.val != p2.val)
+                return false;
+            p1 = p1.next;
+            p2 = p2.next;
         }
 
-        // Move first to the end, maintaining the gap
-        // dummy -> 1 -> 2 -> 3 -> 4 -> 5 -> null
-        // ***************** slow ********** fast
-        while (first != null) {
-            first = first.next;
-            second = second.next;
+        return true;
+    }
+
+    // Taken from https://leetcode.com/problems/reverse-linked-list/solution/
+    private ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr != null) {
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
         }
+        return prev;
+    }
 
-        second.next = second.next.next;
-
-        return dummy.next;
+    private ListNode endOfFirstHalf(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
     }
 }
 
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Nth
-// Node From End of List.
-// Memory Usage: 37 MB, less than 36.31% of Java online submissions for Remove
-// Nth Node From End of List.
+// Runtime: 6 ms, faster than 54.23% of Java online submissions for Palindrome
+// Linked List.
+// Memory Usage: 48.8 MB, less than 72.01% of Java online submissions for
+// Palindrome Linked List.
 // time complexity: O(n)
 // space complexity: O(1)
