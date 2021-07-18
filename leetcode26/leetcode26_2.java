@@ -1,6 +1,7 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
         int n = nums.length;
+
         // count is for counting duplicate numbers
         int count = 0;
 
@@ -8,6 +9,7 @@ class Solution {
             if (nums[i] == nums[i - 1])
                 count++;
             else
+                // put nums[i] back to nums[] after deleting duplicate numbers
                 nums[i - count] = nums[i];
         }
 
