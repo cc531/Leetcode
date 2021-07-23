@@ -14,6 +14,7 @@ class Solution {
                     st.push(c);
                     left--;
                 }
+                // if right num > left num
                 // else, ignore this one, dont push into the stack
 
             } else {
@@ -22,6 +23,8 @@ class Solution {
         }
 
         while (!st.isEmpty()) {
+
+            // if left num > right num
             if (st.peek() == '(' && left > 0) {
                 left--;
                 st.pop();

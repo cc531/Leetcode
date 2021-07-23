@@ -12,11 +12,12 @@ class Solution {
             return false;
         }
 
+        // check the root's substree
         boolean cur = false;
         if (s.val == t.val) {
-            cur = sameTree(s.left, t.left) && sameTree(s.right, t.right);
+            cur = sameTree(s, t);
         }
-
+        // ************ check s left child ***** check s right child
         return cur || isSubtree(s.left, t) || isSubtree(s.right, t);
     }
 

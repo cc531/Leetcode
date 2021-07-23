@@ -1,45 +1,48 @@
 class Solution {
     public int calculate(String s) {
-
-        if (s == null || s.isEmpty())
+        if (s.length() == 0)
             return 0;
-        int len = s.length();
-        Stack<Integer> stack = new Stack<Integer>();
-        int currentNumber = 0;
-        char operation = '+';
 
-        for (int i = 0; i < len; i++) {
-            char currentChar = s.charAt(i);
-            if (Character.isDigit(currentChar)) {
-                currentNumber = (currentNumber * 10) + (currentChar - '0');
+        Stack<Integer> st = new Stack<Integer>();
+        char operation = '+';
+        int number = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            char cur = s.charAt(i);
+
+            if (Character.isDigit(cur)) {
+                number = (number * 10) + (cur - '0');
             }
-            if (currentChar == '+' || currentChar == '-' || currentChar == '*' || currentChar == '/' || i == len - 1) {
-                if (operation == '-') {
-                    stack.push(-currentNumber);
-                } else if (operation == '+') {
-                    stack.push(currentNumber);
-                } else if (operation == '*') {
-                    stack.push(stack.pop() * currentNumber);
-                } else if (operation == '/') {
-                    stack.push(stack.pop() / currentNumber);
+
+            if (cur == '+' || cur == '-' || cur == '*' || cur == '/' || i == s.length() - 1) {
+                if (operation == '+') {
+                    st.push(number);
                 }
-                operation = currentChar;
-                currentNumber = 0;
+
+                else if (operation == '-') {
+                    st.push(-number);
+                }
+
+                else if (operation == '*') {
+                    st.push(st.pop() * number);
+                }
+
+                else if (operation == '/') {
+                    st.push(st.pop() / number);
+                }
+
+                operation = cur;
+                number = 0;
+
             }
         }
 
         int result = 0;
-        while (!stack.isEmpty()) {
-            result += stack.pop();
+        while (!st.isEmpty()) {
+            result += st.pop();
         }
 
         return result;
+
     }
 }
-
-// Runtime: 7 ms, faster than 83.17% of Java online submissions for Basic
-// Calculator II.
-// Memory Usage: 39.4 MB, less than 40.04% of Java online submissions for Basic
-// Calculator II.
-// time complexity: O(n)
-// space complexity: O(n)
