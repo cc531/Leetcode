@@ -1,20 +1,19 @@
 class Solution {
     public String longestPalindrome(String s) {
         int n = s.length();
-        String ans_odd = s.substring(0, 1);
-        String ans_even = "";
+        String ans = s.substring(0, 1);
 
         for (int i = 0; i < n; i++) {
             // odd palindromic
             // bab
-            ans_odd = findLogestPalidr(s, ans_odd, i - 1, i + 1);
+            ans = findLogestPalidr(s, ans, i - 1, i + 1);
 
             // even palindromic
             // baab
-            ans_even = findLogestPalidr(s, ans_even, i, i + 1);
+            ans = findLogestPalidr(s, ans, i, i + 1);
         }
 
-        return ans_even.length() >= ans_odd.length() ? ans_even : ans_odd;
+        return ans;
     }
 
     private String findLogestPalidr(String s, String ans, int left, int right) {
