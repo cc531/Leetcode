@@ -59,4 +59,3 @@ class Solution {
             indices[k] = temp.get(k - left);
         }
     }
-}
