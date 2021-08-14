@@ -22,6 +22,7 @@ class TimeMap {
         String ansStr = "";
 
         // binary search
+        ArrayList<ArrayList<String>> ans = map.get(key);
         int left = 0, right = ans.size();
 
         while (left < right) {
